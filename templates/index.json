@@ -61,7 +61,7 @@
         "p3"
       ],
       "settings": {
-        "heading": "El Taller de los Enigmas",
+        "heading": "Fábrica de Enigmas",
         "subtitle": "<p>Diseñamos casos de misterio, policial y terror listos para imprimir: cada pack incluye pistas, documentos y giros sorprendentes. Ideales para una noche distinta con familia o amigos.</p>",
         "primary_cta_label": "Explorar casos",
         "primary_cta_link": "/collections/all",
@@ -71,7 +71,7 @@
         "catalog_title": "Casos destacados",
         "catalog_text": "Elige tu desafío. Juega en solitario o en grupo.",
         "products_limit": 6,
-        "products_columns": "2",
+        "products_columns": "3",
         "show_price": true,
         "show_details_button": true,
         "details_label": "Ver detalles"
