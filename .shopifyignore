@@ -1,0 +1,23 @@
+# Keep JSON/JS and exclude most Liquid files to stay under 50.
+# Ignore all Liquid files by default
+**/*.liquid
+
+# Ensure directories themselves are not excluded
+!layout/
+!sections/
+!snippets/
+
+# Re-include only what's needed for password page development
+!layout/password.liquid
+!sections/main-password-header.liquid
+!sections/main-password-footer.liquid
+!snippets/meta-tags.liquid
+
+# Allow custom landing section
+!sections/enigmas-landing.liquid
+
+# Explicitly ignore theme layout to avoid churn
+sections/main-password-footer.liquid
+
+# Prevent sync loops from Theme Editor settings writes
+config/settings_data.json

@@ -1,0 +1,21 @@
+{
+  "name": "Enigmas landing",
+  "settings": {
+    "heading": "El Taller de los Enigmas",
+    "subtitle": "We design mystery, crime and horror cases ready to print.",
+    "primary_cta_label": "Explore cases",
+    "secondary_cta_label": "How it works",
+    "catalog_title": "Featured cases",
+    "catalog_text": "Pick your challenge. Solo or group play."
+  },
+  "blocks": {
+    "feature": {
+      "name": "Feature",
+      "settings": {
+        "emoji": "Emoji",
+        "title": "Title",
+        "text": "Text"
+      }
+    }
+  }
+}

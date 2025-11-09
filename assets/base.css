@@ -3595,3 +3595,29 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+/* Enigmas global color scheme overrides */
+:root,
+[class^="color-"],
+[class*=" color-"] {
+  /* Foreground and base background */
+  --color-foreground: 230, 237, 243; /* #e6edf3 */
+  --color-background: 12, 15, 18;    /* #0c0f12 */
+
+  /* Gradient background to match Enigmas landing */
+  --gradient-background: radial-gradient(900px 400px at 15% -5%, rgba(192, 28, 40, 0.30), transparent 60%),
+                         radial-gradient(800px 360px at 85% 0%, rgba(128, 0, 32, 0.22), transparent 60%),
+                         linear-gradient(180deg, #0c0f12, #12080c 40%, #16090a);
+
+  /* Buttons and accents */
+  --color-button: 224, 30, 55;        /* #e01e37 */
+  --color-button-text: 255, 255, 255; /* white for contrast */
+  --color-secondary-button: 12, 15, 18; /* match background */
+  --color-secondary-button-text: 220, 227, 234; /* #dce3ea */
+  --color-link: 220, 227, 234; /* subtle link color on dark */
+
+  /* Shadows */
+  --color-shadow: 18, 18, 18; /* #121212 */
+}
+
+/* Ensure document uses dark color-scheme for UI controls */
+html, body { color-scheme: dark; }

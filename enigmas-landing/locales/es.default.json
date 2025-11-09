@@ -1,0 +1,22 @@
+{
+  "name": "Landing Enigmas",
+  "settings": {
+    "heading": "El Taller de los Enigmas",
+    "subtitle": "Diseñamos casos de misterio, policial y terror listos para imprimir.",
+    "primary_cta_label": "Explorar casos",
+    "secondary_cta_label": "Cómo funciona",
+    "catalog_title": "Casos destacados",
+    "catalog_text": "Elige tu desafío. Juega en solitario o en grupo."
+  },
+  "blocks": {
+    "feature": {
+      "name": "Característica",
+      "settings": {
+        "emoji": "Emoji",
+        "title": "Título",
+        "text": "Descripción"
+      }
+    }
+  }
+}
+
