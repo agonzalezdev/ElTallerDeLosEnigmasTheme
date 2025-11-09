@@ -35,7 +35,7 @@
 
 .en-catalog { padding: 2rem 1rem 4rem; }
 .en-catalog__head { max-width: 64rem; margin: 0 auto 1rem; text-align: center; }
-.en-grid { max-width: 64rem; margin: 0 auto; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+.en-grid { max-width: 96rem; margin: 0 auto; display: grid; grid-template-columns: repeat(var(--en-columns, 2), minmax(0,1fr)); gap: 1.25rem; }
 .en-card { background: var(--en-card); border: 1px solid var(--en-border); border-radius: 16px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease; }
 .en-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.35); border-color: rgba(255,255,255,.16); }
 .en-card__media { position: relative; aspect-ratio: 3/2; overflow: hidden; }
@@ -60,4 +60,3 @@
 html.shopify-design-mode .enigmas-landing .en-features__grid > *:not(.en-feature) {
   display: none !important;
 }
-

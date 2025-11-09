@@ -15,44 +15,38 @@
         "feature1": {
           "type": "feature",
           "settings": {
-            "emoji": "",
-            "title": "🕵️ Investiga",
+            "emoji": "🕵️",
+            "title": "Investiga",
             "text": "Archivos, fotos, notas y declaraciones."
           }
         },
         "feature2": {
           "type": "feature",
           "settings": {
-            "emoji": "",
-            "title": "🧩 Conecta",
+            "emoji": "🧩",
+            "title": "Conecta",
             "text": "Une pistas y descubre la verdad."
           }
         },
         "feature3": {
           "type": "feature",
           "settings": {
-            "emoji": "",
-            "title": "🖨️ Imprime",
+            "emoji": "🖨️",
+            "title": "Imprime",
             "text": "Listo para jugar donde quieras."
           }
         },
         "p1": {
           "type": "product_card",
-          "settings": {
-            "product": "🔪-la-escena-del-cuarto-piso"
-          }
+          "settings": {}
         },
         "p2": {
           "type": "product_card",
-          "settings": {
-            "product": "susurro-casa-abandonada"
-          }
+          "settings": {}
         },
         "p3": {
           "type": "product_card",
-          "settings": {
-            "product": "el-reflejo-culpable"
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -74,6 +68,7 @@
         "catalog_title": "Casos destacados",
         "catalog_text": "Elige tu desafío. Juega en solitario o en grupo.",
         "products_limit": 6,
+        "products_columns": "2",
         "show_price": true,
         "show_details_button": true,
         "details_label": "Ver detalles"

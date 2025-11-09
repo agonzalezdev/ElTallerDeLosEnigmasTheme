@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<section class="enigmas-landing" style="--en-limit: {{ section.settings.products_limit | default: 6 }};">
+<section class="enigmas-landing" style="--en-limit: {{ section.settings.products_limit | default: 6 }}; --en-columns: {{ section.settings.products_columns | default: 2 }};">
   <div class="en-hero">
     <div class="en-hero__content">
       <h2 class="en-title">{{ section.settings.heading | escape }}</h2>
@@ -146,6 +146,7 @@
     { "type": "text", "id": "catalog_title", "label": "Título de catálogo", "default": "Casos destacados" },
     { "type": "text", "id": "catalog_text", "label": "Texto de catálogo", "default": "Elige tu desafío. Juega en solitario o en grupo." },
     { "type": "range", "id": "products_limit", "label": "Cantidad de productos", "min": 3, "max": 12, "step": 1, "default": 6 },
+    { "type": "select", "id": "products_columns", "label": "Columnas en desktop", "default": "2", "options": [ {"value": "2", "label": "2"}, {"value": "3", "label": "3"} ] },
     { "type": "checkbox", "id": "show_price", "label": "Mostrar precio", "default": true },
     { "type": "checkbox", "id": "show_details_button", "label": "Mostrar botón 'Ver detalles'", "default": true },
     { "type": "text", "id": "details_label", "label": "Texto botón detalles", "default": "Ver detalles" }
