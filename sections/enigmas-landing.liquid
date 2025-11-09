@@ -46,41 +46,83 @@
     </div>
   {% endif %}
 
-  {% if section.settings.collection %}
+  {% comment %}Determine if there are manual product blocks{% endcomment %}
+  {% assign has_product_blocks = false %}
+  {% for block in section.blocks %}
+    {% if block.type == 'product_card' %}
+      {% assign has_product_blocks = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if has_product_blocks or section.settings.collection %}
     <div class="en-catalog">
       <div class="en-catalog__head">
         <h3>{{ section.settings.catalog_title | default: 'Casos destacados' }}</h3>
         {% if section.settings.catalog_text != blank %}<p>{{ section.settings.catalog_text }}</p>{% endif %}
       </div>
       <div class="en-grid">
-        {% assign limit = section.settings.products_limit | default: 6 %}
-        {% for product in section.settings.collection.products limit: limit %}
-          <article class="en-card">
-            <div class="en-card__media">
-              {% if product.featured_image %}
-                <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.featured_image.alt | escape }}">
-              {% else %}
-                <div class="en-card__placeholder" aria-hidden="true"></div>
-              {% endif %}
-            </div>
-            <div class="en-card__body">
-              <h4 class="en-card__title">{{ product.title }}</h4>
-              {% if section.settings.show_price %}
-                <div class="en-card__meta">
-                  <span class="en-price">{{ product.price | money_with_currency }}</span>
+        {% if has_product_blocks %}
+          {% for block in section.blocks %}
+            {% if block.type == 'product_card' %}
+              {% assign product = block.settings.product %}
+              <article class="en-card" {{ block.shopify_attributes }}>
+                <div class="en-card__media">
+                  {% if product and product.featured_image %}
+                    <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.featured_image.alt | escape }}">
+                  {% else %}
+                    <div class="en-card__placeholder" aria-hidden="true"></div>
+                  {% endif %}
                 </div>
-              {% endif %}
-              <div class="en-card__footer">
-                {% if section.settings.show_details_button %}
-                  <a href="{{ product.url }}" class="en-btn" aria-label="Ver detalles de {{ product.title }}">
-                    <span>{{ section.settings.details_label | default: 'Ver detalles' }}</span>
-                    <span class="en-btn__icon">→</span>
-                  </a>
+                <div class="en-card__body">
+                  <h4 class="en-card__title">{{ product.title | default: 'Selecciona un producto' }}</h4>
+                  {% if product and section.settings.show_price %}
+                    <div class="en-card__meta">
+                      <span class="en-price">{{ product.price | money_with_currency }}</span>
+                    </div>
+                  {% endif %}
+                  <div class="en-card__footer">
+                    {% if product and section.settings.show_details_button %}
+                      <a href="{{ product.url }}" class="en-btn" aria-label="Ver detalles de {{ product.title }}">
+                        <span>{{ section.settings.details_label | default: 'Ver detalles' }}</span>
+                        <span class="en-btn__icon">→</span>
+                      </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </article>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          {% assign limit = section.settings.products_limit | default: 6 %}
+          {% for product in section.settings.collection.products limit: limit %}
+            <article class="en-card">
+              <div class="en-card__media">
+                {% if product.featured_image %}
+                  <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.featured_image.alt | escape }}">
+                {% else %}
+                  <div class="en-card__placeholder" aria-hidden="true"></div>
                 {% endif %}
               </div>
-            </div>
-          </article>
-        {% endfor %}
+              <div class="en-card__body">
+                <h4 class="en-card__title">{{ product.title }}</h4>
+                {% if section.settings.show_price %}
+                  <div class="en-card__meta">
+                    <span class="en-price">{{ product.price | money_with_currency }}</span>
+                  </div>
+                {% endif %}
+                <div class="en-card__footer">
+                  {% if section.settings.show_details_button %}
+                    <a href="{{ product.url }}" class="en-btn" aria-label="Ver detalles de {{ product.title }}">
+                      <span>{{ section.settings.details_label | default: 'Ver detalles' }}</span>
+                      <span class="en-btn__icon">→</span>
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        {% endif %}
       </div>
     </div>
   {% endif %}
@@ -116,6 +158,14 @@
         { "type": "text", "id": "title", "label": "Título", "default": "Investiga" },
         { "type": "text", "id": "text", "label": "Descripción", "default": "Archivos, fotos, notas y declaraciones." }
       ]
+    },
+    {
+      "type": "product_card",
+      "name": "Producto destacado",
+      "limit": 12,
+      "settings": [
+        { "type": "product", "id": "product", "label": "Producto" }
+      ]
     }
   ],
   "presets": [
@@ -130,4 +180,3 @@
   ]
 }
 {% endschema %}
-
