@@ -11,6 +11,49 @@
   "sections": {
     "main": {
       "type": "enigmas-landing",
+      "blocks": {
+        "feature1": {
+          "type": "feature",
+          "settings": {
+            "title": "Investiga",
+            "text": "Archivos, fotos, notas y declaraciones."
+          }
+        },
+        "feature2": {
+          "type": "feature",
+          "settings": {
+            "title": "Conecta",
+            "text": "Une pistas y descubre la verdad."
+          }
+        },
+        "feature3": {
+          "type": "feature",
+          "settings": {
+            "title": "Imprime",
+            "text": "Listo para jugar donde quieras."
+          }
+        },
+        "p1": {
+          "type": "product_card",
+          "settings": {}
+        },
+        "p2": {
+          "type": "product_card",
+          "settings": {}
+        },
+        "p3": {
+          "type": "product_card",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "feature1",
+        "feature2",
+        "feature3",
+        "p1",
+        "p2",
+        "p3"
+      ],
       "settings": {
         "heading": "El Taller de los Enigmas",
         "subtitle": "<p>Diseñamos casos de misterio, policial y terror listos para imprimir: cada pack incluye pistas, documentos y giros sorprendentes. Ideales para una noche distinta con familia o amigos.</p>",
@@ -26,17 +69,10 @@
         "show_price": true,
         "show_details_button": true,
         "details_label": "Ver detalles"
-      },
-      "blocks": {
-        "feature1": { "type": "feature", "settings": { "emoji": "🕵️", "title": "Investiga", "text": "Archivos, fotos, notas y declaraciones." } },
-        "feature2": { "type": "feature", "settings": { "emoji": "🧩", "title": "Conecta", "text": "Une pistas y descubre la verdad." } },
-        "feature3": { "type": "feature", "settings": { "emoji": "🖨️", "title": "Imprime", "text": "Listo para jugar donde quieras." } },
-        "p1": { "type": "product_card", "settings": { "product": null } },
-        "p2": { "type": "product_card", "settings": { "product": null } },
-        "p3": { "type": "product_card", "settings": { "product": null } }
-      },
-      "block_order": ["feature1", "feature2", "feature3", "p1", "p2", "p3"]
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
