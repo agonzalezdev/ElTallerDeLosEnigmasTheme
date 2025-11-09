@@ -15,21 +15,21 @@
         "feature1": {
           "type": "feature",
           "settings": {
-            "title": "Investiga",
+            "title": "🕵️‍♂️ Investiga",
             "text": "Archivos, fotos, notas y declaraciones."
           }
         },
         "feature2": {
           "type": "feature",
           "settings": {
-            "title": "Conecta",
+            "title": "🧩 Conecta",
             "text": "Une pistas y descubre la verdad."
           }
         },
         "feature3": {
           "type": "feature",
           "settings": {
-            "title": "Imprime",
+            "title": "🖨️ Imprime",
             "text": "Listo para jugar donde quieras."
           }
         },
