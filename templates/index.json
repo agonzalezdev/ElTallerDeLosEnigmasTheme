@@ -35,15 +35,21 @@
         },
         "p1": {
           "type": "product_card",
-          "settings": {}
+          "settings": {
+            "product": "🔪-la-escena-del-cuarto-piso"
+          }
         },
         "p2": {
           "type": "product_card",
-          "settings": {}
+          "settings": {
+            "product": "susurro-casa-abandonada"
+          }
         },
         "p3": {
           "type": "product_card",
-          "settings": {}
+          "settings": {
+            "product": "el-reflejo-culpable"
+          }
         }
       },
       "block_order": [
