@@ -1,0 +1,63 @@
+/* Enigmas Landing styles (scoped by .enigmas-landing) */
+.enigmas-landing {
+  --en-fg: #e6edf3;
+  --en-muted: #b7c0cc;
+  --en-border: rgba(255,255,255,0.08);
+  --en-card: rgba(255,255,255,0.03);
+  --en-grad-1: rgba(192,28,40,0.30);
+  --en-grad-2: rgba(128,0,32,0.22);
+  --en-bg-1: #0c0f12; --en-bg-2: #12080c; --en-bg-3: #16090a;
+  color: var(--en-fg);
+  font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background:
+    radial-gradient(900px 400px at 15% -5%, var(--en-grad-1), transparent 60%),
+    radial-gradient(800px 360px at 85% 0%, var(--en-grad-2), transparent 60%),
+    linear-gradient(180deg, var(--en-bg-1), var(--en-bg-2) 40%, var(--en-bg-3));
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.en-hero { padding: 7rem 1.5rem 5rem; text-align: center; position: relative; }
+.en-hero__content { max-width: 64rem; margin: 0 auto; display: grid; gap: 1.1rem; }
+.en-title { font-family: "Cinzel", Georgia, "Times New Roman", serif; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; font-size: clamp(2.2rem, 3.5vw + 1rem, 3.6rem); margin: 0; text-shadow: 0 6px 24px rgba(193,18,31,0.25); }
+.en-subtitle { color: var(--en-muted); margin: 0; font-size: 1.15rem; }
+.en-ctas { display: inline-grid; grid-auto-flow: column; gap: .75rem; justify-content: center; margin-top: .75rem; }
+.en-cta { padding: .8rem 1rem; border-radius: 999px; text-decoration: none; font-weight: 700; letter-spacing: .02em; }
+.en-cta--primary { color: #0e1116; background: linear-gradient(90deg,#e01e37,#a21caf); box-shadow: 0 10px 20px rgba(162,28,175,.22); }
+.en-cta--secondary { color: #dce3ea; border: 1px solid rgba(255,255,255,.15); backdrop-filter: blur(4px); }
+
+.en-features { padding: 2rem 1.25rem 3rem; }
+.en-features__grid { max-width: 64rem; margin: 0 auto; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+.en-feature { background: var(--en-card); border: 1px solid var(--en-border); border-radius: 14px; padding: 1.1rem; }
+.en-feature__emoji { font-size: 1.6rem; }
+.en-feature__title { margin: .4rem 0; font-weight: 700; }
+.en-feature__text { margin: 0; color: var(--en-muted); }
+
+.en-catalog { padding: 2rem 1rem 4rem; }
+.en-catalog__head { max-width: 64rem; margin: 0 auto 1rem; text-align: center; }
+.en-grid { max-width: 64rem; margin: 0 auto; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+.en-card { background: var(--en-card); border: 1px solid var(--en-border); border-radius: 16px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease; }
+.en-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.35); border-color: rgba(255,255,255,.16); }
+.en-card__media { position: relative; aspect-ratio: 3/2; overflow: hidden; }
+.en-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.en-card__placeholder { width: 100%; height: 100%; background: linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.02)); }
+.en-card__body { padding: 1rem; display: grid; gap: .5rem; }
+.en-card__title { margin: 0; font-size: 1.1rem; }
+.en-card__meta { display: inline-grid; grid-auto-flow: column; gap: .5rem; }
+.en-price { font-weight: 700; }
+.en-card__footer { display: flex; align-items: center; justify-content: space-between; margin-top: .25rem; }
+.en-btn { position: relative; display: inline-flex; align-items: center; gap: .5rem; padding: .55rem .9rem; border-radius: 999px; text-decoration: none; font-weight: 700; letter-spacing: .02em; color: #e6edf3; background: linear-gradient(#0f1318,#0f1318) padding-box, linear-gradient(90deg,#e01e37,#a21caf) border-box; border: 1.5px solid transparent; box-shadow: 0 6px 18px rgba(162,28,175,.2); transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease; }
+.en-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(193,18,31,.25); }
+.en-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(224,30,55,.35); }
+.en-btn__icon { display: inline-block; transform: translateX(0); transition: transform 160ms ease; }
+.en-btn:hover .en-btn__icon { transform: translateX(2px); }
+
+@media (max-width: 900px){
+  .en-features__grid, .en-grid { grid-template-columns: 1fr; }
+}
+
+/* Hide Shopify editor inline add-block buttons that appear under feature blocks */
+html.shopify-design-mode .enigmas-landing .en-features__grid > *:not(.en-feature) {
+  display: none !important;
+}
+
