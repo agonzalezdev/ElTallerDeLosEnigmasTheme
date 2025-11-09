@@ -1,6 +1,6 @@
 {% comment %}
   Enigmas Landing Section
-  Hero + Features + Product grid by collection
+  Hero + Features + Product grid by collection or manual blocks
 {% endcomment %}
 
 {{ 'enigmas-landing.css' | asset_url | stylesheet_tag }}
@@ -32,9 +32,6 @@
         {% for block in section.blocks %}
           {% if block.type == 'feature' %}
             <div class="en-feature" {{ block.shopify_attributes }}>
-              {% if block.settings.emoji != blank %}
-                <div class="en-feature__emoji">{{ block.settings.emoji }}</div>
-              {% endif %}
               {% if block.settings.title != blank %}
                 <h3 class="en-feature__title">{{ block.settings.title | escape }}</h3>
               {% endif %}
@@ -48,7 +45,7 @@
     </div>
   {% endif %}
 
-  {% comment %}Determine if there are manual product blocks{% endcomment %}
+  {% comment %} Check for manual product blocks {% endcomment %}
   {% assign has_product_blocks = false %}
   {% for block in section.blocks %}
     {% if block.type == 'product_card' %}
@@ -157,8 +154,7 @@
       "name": "Feature",
       "limit": 3,
       "settings": [
-        { "type": "text", "id": "emoji", "label": "Emoji", "default": "🕵️" },
-        { "type": "text", "id": "title", "label": "Título", "default": "Investiga" },
+        { "type": "text", "id": "title", "label": "Título", "default": "🕵️ Investiga" },
         { "type": "text", "id": "text", "label": "Descripción", "default": "Archivos, fotos, notas y declaraciones." }
       ]
     },
@@ -175,11 +171,12 @@
     {
       "name": "Enigmas landing",
       "blocks": [
-        { "type": "feature", "settings": { "emoji": "🕵️", "title": "Investiga" } },
-        { "type": "feature", "settings": { "emoji": "🧩", "title": "Conecta" } },
-        { "type": "feature", "settings": { "emoji": "🖨️", "title": "Imprime" } }
+        { "type": "feature", "settings": { "title": "🕵️ Investiga" } },
+        { "type": "feature", "settings": { "title": "🧩 Conecta" } },
+        { "type": "feature", "settings": { "title": "🖨️ Imprime" } }
       ]
     }
   ]
 }
 {% endschema %}
+
