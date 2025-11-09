@@ -1,0 +1,133 @@
+{% comment %}
+  Enigmas Landing Section
+  Hero + Features + Product grid by collection
+{% endcomment %}
+
+{{ 'enigmas-landing.css' | asset_url | stylesheet_tag }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<section class="enigmas-landing" style="--en-limit: {{ section.settings.products_limit | default: 6 }};">
+  <div class="en-hero">
+    <div class="en-hero__content">
+      <h2 class="en-title">{{ section.settings.heading | escape }}</h2>
+      {% if section.settings.subtitle != blank %}
+        <p class="en-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+      <div class="en-ctas">
+        {% if section.settings.primary_cta_label != blank and section.settings.primary_cta_link != blank %}
+          <a class="en-cta en-cta--primary" href="{{ section.settings.primary_cta_link }}">{{ section.settings.primary_cta_label }}</a>
+        {% endif %}
+        {% if section.settings.secondary_cta_label != blank and section.settings.secondary_cta_link != blank %}
+          <a class="en-cta en-cta--secondary" href="{{ section.settings.secondary_cta_link }}">{{ section.settings.secondary_cta_label }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% if section.blocks.size > 0 %}
+    <div class="en-features">
+      <div class="en-features__grid">
+        {% for block in section.blocks %}
+          <div class="en-feature" {{ block.shopify_attributes }}>
+            {% if block.settings.emoji != blank %}
+              <div class="en-feature__emoji">{{ block.settings.emoji }}</div>
+            {% endif %}
+            {% if block.settings.title != blank %}
+              <h3 class="en-feature__title">{{ block.settings.title | escape }}</h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <p class="en-feature__text">{{ block.settings.text }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if section.settings.collection %}
+    <div class="en-catalog">
+      <div class="en-catalog__head">
+        <h3>{{ section.settings.catalog_title | default: 'Casos destacados' }}</h3>
+        {% if section.settings.catalog_text != blank %}<p>{{ section.settings.catalog_text }}</p>{% endif %}
+      </div>
+      <div class="en-grid">
+        {% assign limit = section.settings.products_limit | default: 6 %}
+        {% for product in section.settings.collection.products limit: limit %}
+          <article class="en-card">
+            <div class="en-card__media">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.featured_image.alt | escape }}">
+              {% else %}
+                <div class="en-card__placeholder" aria-hidden="true"></div>
+              {% endif %}
+            </div>
+            <div class="en-card__body">
+              <h4 class="en-card__title">{{ product.title }}</h4>
+              {% if section.settings.show_price %}
+                <div class="en-card__meta">
+                  <span class="en-price">{{ product.price | money_with_currency }}</span>
+                </div>
+              {% endif %}
+              <div class="en-card__footer">
+                {% if section.settings.show_details_button %}
+                  <a href="{{ product.url }}" class="en-btn" aria-label="Ver detalles de {{ product.title }}">
+                    <span>{{ section.settings.details_label | default: 'Ver detalles' }}</span>
+                    <span class="en-btn__icon">→</span>
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Enigmas landing",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "El Taller de los Enigmas" },
+    { "type": "richtext", "id": "subtitle", "label": "Subtítulo", "default": "<p>Diseñamos casos de misterio, policial y terror listos para imprimir: cada pack incluye pistas, documentos y giros sorprendentes. Ideales para una noche distinta con familia o amigos.</p>" },
+    { "type": "text", "id": "primary_cta_label", "label": "CTA primaria - texto", "default": "Explorar casos" },
+    { "type": "url", "id": "primary_cta_link", "label": "CTA primaria - enlace" },
+    { "type": "text", "id": "secondary_cta_label", "label": "CTA secundaria - texto", "default": "Cómo funciona" },
+    { "type": "url", "id": "secondary_cta_link", "label": "CTA secundaria - enlace" },
+
+    { "type": "header", "content": "Catálogo" },
+    { "type": "collection", "id": "collection", "label": "Colección de productos" },
+    { "type": "text", "id": "catalog_title", "label": "Título de catálogo", "default": "Casos destacados" },
+    { "type": "text", "id": "catalog_text", "label": "Texto de catálogo", "default": "Elige tu desafío. Juega en solitario o en grupo." },
+    { "type": "range", "id": "products_limit", "label": "Cantidad de productos", "min": 3, "max": 12, "step": 1, "default": 6 },
+    { "type": "checkbox", "id": "show_price", "label": "Mostrar precio", "default": true },
+    { "type": "checkbox", "id": "show_details_button", "label": "Mostrar botón 'Ver detalles'", "default": true },
+    { "type": "text", "id": "details_label", "label": "Texto botón detalles", "default": "Ver detalles" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "emoji", "label": "Emoji", "default": "🕵️" },
+        { "type": "text", "id": "title", "label": "Título", "default": "Investiga" },
+        { "type": "text", "id": "text", "label": "Descripción", "default": "Archivos, fotos, notas y declaraciones." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Enigmas landing",
+      "blocks": [
+        { "type": "feature", "settings": { "emoji": "🕵️", "title": "Investiga" } },
+        { "type": "feature", "settings": { "emoji": "🧩", "title": "Conecta" } },
+        { "type": "feature", "settings": { "emoji": "🖨️", "title": "Imprime" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
