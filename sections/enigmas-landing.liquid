@@ -30,17 +30,19 @@
     <div class="en-features">
       <div class="en-features__grid">
         {% for block in section.blocks %}
-          <div class="en-feature" {{ block.shopify_attributes }}>
-            {% if block.settings.emoji != blank %}
-              <div class="en-feature__emoji">{{ block.settings.emoji }}</div>
-            {% endif %}
-            {% if block.settings.title != blank %}
-              <h3 class="en-feature__title">{{ block.settings.title | escape }}</h3>
-            {% endif %}
-            {% if block.settings.text != blank %}
-              <p class="en-feature__text">{{ block.settings.text }}</p>
-            {% endif %}
-          </div>
+          {% if block.type == 'feature' %}
+            <div class="en-feature" {{ block.shopify_attributes }}>
+              {% if block.settings.emoji != blank %}
+                <div class="en-feature__emoji">{{ block.settings.emoji }}</div>
+              {% endif %}
+              {% if block.settings.title != blank %}
+                <h3 class="en-feature__title">{{ block.settings.title | escape }}</h3>
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <p class="en-feature__text">{{ block.settings.text }}</p>
+              {% endif %}
+            </div>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
